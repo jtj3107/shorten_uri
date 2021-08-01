@@ -49,6 +49,8 @@ public class DispatcherServlet extends HttpServlet {
 			switch (rq.getControllerName()) {
 			case "m":
 				return Container.usrMemberController;
+			case "a":
+				return Container.usrShortController;
 			case "home":
 				return Container.usrHomeController;
 			}

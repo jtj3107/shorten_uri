@@ -9,17 +9,19 @@ public class NeedLoginInterceptor extends Interceptor {
 
 	@Override
 	public boolean runBeforeAction(Rq rq) {
-		if (rq.getControllerTypeName().equals("usr") == false) {
+		if (rq.getControllerTypeName().equals("master") == false) {
 			return true;
 		}
 
 		switch (rq.getActionPath()) {
-		case "/usr/home/main":
+		case "/master/home/main":
+		case "/master/m/login":
+		case "/master/m/doLogin":
 			return true;
 		}
 
 		if (rq.isNotLogined()) {
-			rq.replace("로그인 후 이용해주세요.", "../member/login?afterLoginUri=" + rq.getEncodedAfterLoginUri());
+			rq.replace("로그인 후 이용해주세요.", "../m/login?afterLoginUri=" + rq.getEncodedAfterLoginUri());
 
 			return false;
 		}
