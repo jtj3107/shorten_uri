@@ -5,6 +5,9 @@ import com.jhs.exam.exam2.http.Rq;
 import com.jhs.exam.exam2.util.Ut;
 
 public class BeforeActionInterceptor extends Interceptor {
+	@Override
+	public void init() {
+	}
 
 	@Override
 	public boolean runBeforeAction(Rq rq) {

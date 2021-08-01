@@ -2,7 +2,11 @@ package com.jhs.exam.exam2.http.controller;
 
 import com.jhs.exam.exam2.http.Rq;
 
-public class GoHomeController extends Controller {
+public class UsrHomeController extends Controller {
+	@Override
+	public void init() {
+	}
+	
 	@Override
 	public void performAction(Rq rq) {
 		switch (rq.getActionMethodName()) {

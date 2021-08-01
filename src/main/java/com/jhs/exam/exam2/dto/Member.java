@@ -12,11 +12,6 @@ public class Member {
 	private String updateDate;
 	private String loginId;
 	private String loginPw;
-	private String delDate;
-	private boolean delStatus;
-	private String name;
 	private String nickname;
 	private String email;
-	private String cellphoneNo;
-	private int authLevel;
 }

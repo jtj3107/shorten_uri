@@ -47,10 +47,10 @@ public class DispatcherServlet extends HttpServlet {
 		switch (rq.getControllerTypeName()) {
 		case "master":
 			switch (rq.getControllerName()) {
-//			case "a":
-//				return Container.goAddController;
+			case "m":
+				return Container.usrMemberController;
 			case "home":
-				return Container.goHomeController;
+				return Container.usrHomeController;
 			}
 
 			break;
