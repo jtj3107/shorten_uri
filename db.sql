@@ -40,8 +40,10 @@ CREATE TABLE keyword (
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
-    memberId INT(10) UNSIGNED NOT NULL,
+    memberId INT(10) NOT NULL,
     relTypeCode CHAR(100) NOT NULL,
-    relId INT(10) UNSIGNED NOT NULL,
-    keyStr CHAR(20) UNIQUE NOT NULL
+    relId INT(10) NOT NULL,
+    keyStr CHAR(20) NOT NULL
 );
+
+ALTER TABLE keyword ADD UNIQUE INDEX keywordIndex (memberId, relTypeCode, keyStr, relId);
