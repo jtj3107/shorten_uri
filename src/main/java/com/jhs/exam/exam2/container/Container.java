@@ -6,6 +6,7 @@ import java.util.List;
 import com.jhs.exam.exam2.http.controller.Controller;
 import com.jhs.exam.exam2.http.controller.UsrHomeController;
 import com.jhs.exam.exam2.http.controller.UsrMemberController;
+import com.jhs.exam.exam2.http.controller.UsrMoveController;
 import com.jhs.exam.exam2.http.controller.UsrShortController;
 import com.jhs.exam.exam2.interceptor.BeforeActionInterceptor;
 import com.jhs.exam.exam2.interceptor.NeedLoginInterceptor;
@@ -31,6 +32,7 @@ public class Container {
 	public static UsrHomeController usrHomeController;
 	public static UsrMemberController usrMemberController;
 	public static UsrShortController usrShortController;
+	public static UsrMoveController usrMoveController;
 
 	public static void init() {
 		containerComponents = new ArrayList<>();
@@ -48,6 +50,7 @@ public class Container {
 		usrHomeController = addContainerComponent(new UsrHomeController());
 		usrMemberController = addContainerComponent(new UsrMemberController());
 		usrShortController = addContainerComponent(new UsrShortController());
+		usrMoveController = addContainerComponent(new UsrMoveController());
 
 		// 객체 초기화
 		for (ContainerComponent containerComponent : containerComponents) {

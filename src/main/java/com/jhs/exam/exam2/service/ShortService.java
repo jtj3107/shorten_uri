@@ -37,4 +37,8 @@ public class ShortService implements ContainerComponent{
 		return shortUriLastNum + 1;
 	}
 
+	public ShortUri getShortByShortCode(String shortCode) {
+		return shortRepository.getShortByShortCode(shortCode);
+	}
+
 }

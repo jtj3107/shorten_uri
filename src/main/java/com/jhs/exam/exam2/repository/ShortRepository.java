@@ -46,4 +46,13 @@ public class ShortRepository implements ContainerComponent{
 		return MysqlUtil.selectRow(sql, ShortUri.class);
 	}
 
+	public com.jhs.exam.exam2.dto.ShortUri getShortByShortCode(String shortCode) {
+		SecSql sql = new SecSql();
+		sql.append("SELECT S.*");
+		sql.append("FROM shortUri AS S");
+		sql.append("WHERE S.shortCode = ?", shortCode);
+
+		return MysqlUtil.selectRow(sql, ShortUri.class);
+	}
+
 }
