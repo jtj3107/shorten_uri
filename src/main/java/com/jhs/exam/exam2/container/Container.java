@@ -11,14 +11,18 @@ import com.jhs.exam.exam2.interceptor.BeforeActionInterceptor;
 import com.jhs.exam.exam2.interceptor.NeedLoginInterceptor;
 import com.jhs.exam.exam2.interceptor.NeedLogoutInterceptor;
 import com.jhs.exam.exam2.repository.MemberRepository;
+import com.jhs.exam.exam2.repository.ShortRepository;
 import com.jhs.exam.exam2.service.MemberService;
+import com.jhs.exam.exam2.service.ShortService;
 
 public class Container {
 	private static List<ContainerComponent> containerComponents;
 
 	public static MemberService memberService;
-
+	public static ShortService shortService;
+	
 	public static MemberRepository memberRepository;
+	public static ShortRepository shortRepository;
 
 	public static BeforeActionInterceptor beforeActionInterceptor;
 	public static NeedLoginInterceptor needLoginInterceptor;
@@ -32,8 +36,10 @@ public class Container {
 		containerComponents = new ArrayList<>();
 
 		memberService = addContainerComponent(new MemberService());
+		shortService = addContainerComponent(new ShortService());
 
 		memberRepository = addContainerComponent(new MemberRepository());
+		shortRepository = addContainerComponent(new ShortRepository());
 
 		beforeActionInterceptor = addContainerComponent(new BeforeActionInterceptor());
 		needLoginInterceptor = addContainerComponent(new NeedLoginInterceptor());
