@@ -31,10 +31,8 @@ public class UsrShortController extends Controller {
 		String text = rq.getParam("text", "내용없음");
 		long shortNum = getLastShortUriNum();
 
-		String redirectUri = rq.getParam("redirectUri", "../home/main");
-
 		if (originUri.length() == 0) {
-			rq.historyBack("title을 입력해주세요.");
+			rq.historyBack("페이지 주소를 입력해주세요.");
 			return;
 		}
 		
@@ -43,15 +41,18 @@ public class UsrShortController extends Controller {
 			return;
 		}
 		
-		ResultData ShortUri = shortService.ShortUri(memberId, originUri, text, shortNum);
+		ResultData shortUri = shortService.ShortUri(memberId, originUri, text, shortNum);
 
-		if(ShortUri == null) {
+		if(shortUri == null) {
 			rq.historyBack("잘못된 접근입니다.");
 			return;
 		}
+		
+		String shortCode = (String)shortUri.getBody().get("shortUri");
 
-		rq.replace(ShortUri.getMsg(), redirectUri);
+		rq.replace(shortUri.getMsg(), "../home/main?shortUri=" + shortCode);
 	}
+
 
 	private long getLastShortUriNum() {
 		return shortService.getLastShortUriNum();

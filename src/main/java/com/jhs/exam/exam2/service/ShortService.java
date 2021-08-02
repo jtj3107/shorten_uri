@@ -21,7 +21,7 @@ public class ShortService implements ContainerComponent{
 
 		int id = shortRepository.ShortUri(memberId, shortUri, originUri, text, blanklessText);
 
-		return ResultData.from("S-1", shortUri + "");
+		return ResultData.from("S-1", "단축 완료", "shortUri", shortUri);
 	}
 
 	public long getLastShortUriNum() {

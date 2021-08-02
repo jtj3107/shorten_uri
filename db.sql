@@ -24,13 +24,17 @@ CREATE TABLE shortUri (
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
     updateDate DATETIME NOT NULL,
-    memberId INT(10) UNSIGNED NOT NULL,
+    memberId INT(10) NOT NULL,
     shortCode CHAR(3) NOT NULL,
     originUri CHAR(150) NOT NULL,
     `text` VARCHAR(100) NOT NULL,
-    blanklessText CHAR(100) UNIQUE NOT NULL,
-    accessCount INT(10) UNSIGNED NOT NULL
+    blanklessText CHAR(100) NOT NULL,
+    accessCount INT(10) NOT NULL
 );
+
+SHOW INDEX FROM shortUri;
+
+ALTER TABLE shortUri ADD UNIQUE INDEX indexname (memberId, blanklessText);
 
 CREATE TABLE keyword (
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,

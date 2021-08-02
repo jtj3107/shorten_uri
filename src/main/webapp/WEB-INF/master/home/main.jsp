@@ -21,7 +21,7 @@
 						if (ShortUri__submitDone) {
 							return;
 						}
-						
+
 						form.originUri.value = form.originUri.value.trim();
 
 						if (form.originUri.value.length == 0) {
@@ -30,20 +30,26 @@
 
 							return;
 						}
-						
+
+						if (form.text.value.length == 0) {
+							alert('페이지 설명을 입력해주세요.');
+							form.text.focus();
+
+							return;
+						}
+
 						form.submit();
 						ShortUri__submitDone = true;
 					}
 				</script>
 				<form action="../a/doShortUri" method="POST" onsubmit="ShortUri__submit(this); return false;">
-					<input type="hidden" name="redirectUri" value="${param.afterLoginUri}" />
 
 					<div class="form-control">
 						<label class="label">
 							<span class="label-text">페이지 주소</span>
 						</label>
 						<div>
-							<input class="input input-bordered w-full" maxlength="100" name="originUri" type="text" placeholder="페이지주소를 입력해주세요."/>
+							<input class="input input-bordered w-full" maxlength="100" name="originUri" type="text" placeholder="페이지주소를 입력해주세요." />
 						</div>
 					</div>
 
@@ -62,6 +68,12 @@
 				</form>
 			</div>
 		</div>
+		<c:if test="${param.shortUri != null && param.shortUri != '' }">
+			<div class="card-title w-full max-w-md">
+				<span>http://localhost:8080/go/master/s/${param.shortUri}</span>
+			</div>
+		</c:if>
 	</div>
 </section>
+
 <%@ include file="../part/foot.jspf"%>
